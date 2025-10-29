@@ -27,9 +27,7 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.withSettings;
 
-import java.sql.ResultSet;
 import java.util.Vector;
-
 import net.sf.json.JSONObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -151,8 +149,8 @@ public class AlertAPIUnitTest {
         given(mockAlertsList.get(2).getRisk()).willReturn(1);
 
         Vector<Integer> MockAlertList = new Vector<>();
-        for(RecordAlert alert : mockAlertsList) {
-            MockAlertList.add(alert.getAlertId());    
+        for (RecordAlert alert : mockAlertsList) {
+            MockAlertList.add(alert.getAlertId());
         }
 
         given(tableAlert.getAlertList()).willReturn(MockAlertList);
@@ -165,7 +163,7 @@ public class AlertAPIUnitTest {
         // Then
         assertThat(response.getName(), is(equalTo(name)));
         assertThat(response, is(instanceOf(ApiResponseList.class)));
-        if(ApiResponseList.class.isInstance(response)) {
+        if (ApiResponseList.class.isInstance(response)) {
             assertThat(((ApiResponseList) response).getItems().size(), is(equalTo(2)));
             assertThat(
                     response.toJSON().toString(),
@@ -203,8 +201,8 @@ public class AlertAPIUnitTest {
         given(mockAlertsList.get(2).getRisk()).willReturn(1);
 
         Vector<Integer> MockAlertList = new Vector<>();
-        for(RecordAlert alert : mockAlertsList) {
-            MockAlertList.add(alert.getAlertId());    
+        for (RecordAlert alert : mockAlertsList) {
+            MockAlertList.add(alert.getAlertId());
         }
 
         given(tableAlert.getAlertList()).willReturn(MockAlertList);
@@ -217,7 +215,7 @@ public class AlertAPIUnitTest {
         // Then
         assertThat(response.getName(), is(equalTo(name)));
         assertThat(response, is(instanceOf(ApiResponseList.class)));
-        if(ApiResponseList.class.isInstance(response)) {
+        if (ApiResponseList.class.isInstance(response)) {
             assertThat(((ApiResponseList) response).getItems().size(), is(equalTo(3)));
             assertThat(
                     response.toJSON().toString(),

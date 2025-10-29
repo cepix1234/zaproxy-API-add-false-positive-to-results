@@ -128,7 +128,12 @@ public class AlertAPI extends ApiImplementor {
                         VIEW_ALERTS,
                         null,
                         new String[] {
-                            PARAM_BASE_URL, PARAM_START, PARAM_COUNT, PARAM_RISK, PARAM_CONTEXT_NAME, PARAM_FALSE_POSITIVE
+                            PARAM_BASE_URL,
+                            PARAM_START,
+                            PARAM_COUNT,
+                            PARAM_RISK,
+                            PARAM_CONTEXT_NAME,
+                            PARAM_FALSE_POSITIVE
                         }));
         this.addApiView(new ApiView(VIEW_ALERTS_SUMMARY, null, new String[] {PARAM_BASE_URL}));
         this.addApiView(
@@ -247,7 +252,8 @@ public class AlertAPI extends ApiImplementor {
                     this.getParam(params, PARAM_START, -1),
                     this.getParam(params, PARAM_COUNT, -1),
                     getRiskId(params),
-                    counter, false);
+                    counter,
+                    false);
 
             result = new ApiResponseElement(name, Integer.toString(counter.getCount()));
         } else if (VIEW_ALERTS_SUMMARY.equals(name)) {
@@ -258,7 +264,8 @@ public class AlertAPI extends ApiImplementor {
                     -1,
                     -1,
                     NO_RISK_ID,
-                    counter, false);
+                    counter,
+                    false);
 
             Map<String, Object> alertData = new HashMap<>();
             for (int i = 0; i < riskSummary.length; i++) {
@@ -363,7 +370,8 @@ public class AlertAPI extends ApiImplementor {
                     -1,
                     -1,
                     getRiskId(params),
-                    counter, false);
+                    counter,
+                    false);
             return new ApiResponseElement(ACTION_DELETE_ALERTS, String.valueOf(count[0]));
         } else if (ACTION_UPDATE_ALERT.equals(name)) {
             int alertId = ApiUtils.getIntParam(params, PARAM_ALERT_ID);
@@ -471,7 +479,12 @@ public class AlertAPI extends ApiImplementor {
     }
 
     private static void processAlerts(
-            String baseUrl, int start, int count, int riskId, Processor<Alert> processor, boolean falsePositive)
+            String baseUrl,
+            int start,
+            int count,
+            int riskId,
+            Processor<Alert> processor,
+            boolean falsePositive)
             throws ApiException {
         List<Alert> alerts = new ArrayList<>();
         try {
